@@ -276,6 +276,7 @@
 
                 var bufferSize = 2 * this.audioCtx.sampleRate;
                 var noiseBuffer = this.audioCtx.createBuffer(1, bufferSize, this.audioCtx.sampleRate);
+                console.log(noiseBuffer);
                 var noise = noiseBuffer.getChannelData(0);
                 for (var i = 0; i < bufferSize; i++) {
                         noise[i] = Math.random()*0.5 - 1;
