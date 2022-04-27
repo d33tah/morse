@@ -66,7 +66,7 @@ function sprawdz() {
             inp.value = "";
             m.stop();
             clearTimeout(timer);
-            odpalNoweSlowo();
+            setTimeout(odpalNoweSlowo, 500);
             dobrze += 1;
             podRzad += 1;
         } else {
@@ -88,6 +88,6 @@ var podRzad = 0;
 var dobrze = 0;
 var zle = 0;
 var slow = 0;
-odpalNoweSlowo();
+setTimeout(odpalNoweSlowo, 500);
 odswiezStatystyki();
 </script>
