@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="jscwlib.js"></script>
+<script src="slowa.js"></script>
+
+<div id="player" style="display: none;"></div>
+<input id="input" onkeypress="sprawdz()">
+
+<script>
+function odpalNoweSlowo() {
+    slowo = "";
+    while (slowo == "" || slowo.length > 3)
+        slowo = slowa[Math.floor(Math.random() * slowa.length)];
+    m.play(slowo);
+    timer = setTimeout(repeat, m.getLength() * 3000);
+}
+
+function repeat() {
+    m.play(slowo);
+    timer = setTimeout(repeat, m.getLength() * 3000);
+}
+
+function sprawdz() {
+    if (event.keyCode == 13)
+    {
+        inp = document.getElementById("input");
+        if (inp.value == slowo) {
+            inp.value = "";
+            m.stop();
+            clearTimeout(timer);
+            odpalNoweSlowo();
+            alert("Dobrze");
+        } else {
+            alert("Zle");
+        }
+    }
+}
+
+var m = new jscw({"wpm": 20});
+m.renderPlayer('player', m);
+var timer = null;
+var slowo = "";
+odpalNoweSlowo();
+</script>
