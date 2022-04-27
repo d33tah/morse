@@ -86,6 +86,10 @@ var parametry = getHashParams();
 var wpm = parametry["wpm"] || 20;
 var minimalnaDlugoscSlowa = parametry["minimalnaDlugoscSlowa"] || 1;
 var maksymalnaDlugoscSlowa = parametry["maksymalnaDlugoscSlowa"] || 3;
+if (window.location.hash.length == 0) {
+    defHash = 'wpm=20&minimalnaDlugoscSlowa=1&maksymalnaDlugoscSlowa=3';
+    window.location.hash = defHash;
+}
 var m = new jscw({"wpm": wpm});
 m.renderPlayer('player', m);
 var timer = null;
@@ -94,6 +98,5 @@ var podRzad = 0;
 var dobrze = 0;
 var zle = 0;
 var slow = 0;
-setTimeout(odpalNoweSlowo, 500);
 odswiezStatystyki();
 </script>
