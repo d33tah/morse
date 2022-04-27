@@ -3,6 +3,7 @@
 <script src="jscwlib.js"></script>
 <script src="slowa.js"></script>
 
+<input id="start" type="submit" value="start" onclick="start()">
 <p>
     Pod rząd: <span id="podRzad" style="color: blue"></span>
     Dobrze: <span id="dobrze" style="color: green"></span>
@@ -74,6 +75,11 @@ function sprawdz() {
         }
         odswiezStatystyki();
     }
+}
+
+function start() {
+    odpalNoweSlowo();
+    document.getElementById("start").remove();
 }
 
 var parametry = getHashParams();
