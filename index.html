@@ -3,6 +3,11 @@
 <script src="jscwlib.js"></script>
 <script src="slowa.js"></script>
 
+<p>
+    Pod rząd: <span id="podRzad" color="blue"></span>
+    Dobrze: <span id="dobrze" color="green"></span>
+    Źle: <span id="zle" color="red"></span>
+</p>
 <div id="player" style="display: none;"></div>
 <input id="input" onkeypress="sprawdz()">
 
@@ -13,11 +18,20 @@ function odpalNoweSlowo() {
         slowo = slowa[Math.floor(Math.random() * slowa.length)];
     m.play(slowo);
     timer = setTimeout(repeat, m.getLength() * 3000);
+    slow += 1;
 }
 
 function repeat() {
+    clearTimeout(timer);
+    podRzad = 0;
     m.play(slowo);
     timer = setTimeout(repeat, m.getLength() * 3000);
+}
+
+function odswiezStatystyki() {
+    document.getElementById("podRzad").textContent = podRzad.toString();
+    document.getElementById("dobrze").textContent = dobrze.toString();
+    document.getElementById("zle").textContent = zle.toString();
 }
 
 function sprawdz() {
@@ -29,10 +43,12 @@ function sprawdz() {
             m.stop();
             clearTimeout(timer);
             odpalNoweSlowo();
-            alert("Dobrze");
+            dobrze += 1;
+            podRzad += 1;
         } else {
-            alert("Zle");
+            zle += 1;
         }
+        odswiezStatystyki();
     }
 }
 
@@ -40,5 +56,10 @@ var m = new jscw({"wpm": 20});
 m.renderPlayer('player', m);
 var timer = null;
 var slowo = "";
+var podRzad = 0;
+var dobrze = 0;
+var zle = 0;
+var slow = 0;
 odpalNoweSlowo();
+odswiezStatystyki();
 </script>
