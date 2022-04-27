@@ -99,4 +99,9 @@ var dobrze = 0;
 var zle = 0;
 var slow = 0;
 odswiezStatystyki();
+
+window.onerror = function (message, url, lineNo){
+    alert('Error: ' + message + '\n' + 'Line Number: ' + lineNo);
+    return true;
+}
 </script>
